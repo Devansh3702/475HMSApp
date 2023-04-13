@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
 
 
+                // remove this Toast later, not needed
                 Toast.makeText(MainActivity.this, "Email: " + email + "\nPassword: " + password, Toast.LENGTH_SHORT).show();
             }
         });
