@@ -1,5 +1,6 @@
 package com.example.hms475;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -49,6 +50,12 @@ public class ScheduleAppointmentActivity extends AppCompatActivity {
                 Toast.makeText(ScheduleAppointmentActivity.this,
                         "Appointment scheduled for " + selectedDate + " at " + selectedTime,
                         Toast.LENGTH_SHORT).show();
+
+                // redirect to HomeActivity again
+                Intent intent = new Intent(ScheduleAppointmentActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+
             }
         });
     }

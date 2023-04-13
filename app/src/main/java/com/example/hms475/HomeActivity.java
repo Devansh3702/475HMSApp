@@ -66,7 +66,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 // TODO: Implement Get Referral functionality here
                 break;
             case R.id.sign_out_button:
-                // TODO: Implement Sign Out functionality here
+                // redirect to MainActivity again (login page)
+                Intent intent2 = new Intent(HomeActivity.this, MainActivity.class);
+                startActivity(intent2);
+                finish();
                 break;
         }
     }
