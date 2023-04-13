@@ -2,6 +2,7 @@ package com.example.hms475;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +31,13 @@ public class MainActivity extends AppCompatActivity {
                 String password = passwordEditText.getText().toString().trim();
 
                 // TODO: Implement login functionality here
+
+                // if login successful, redirect to HomeActivity
+                // temporary redirection to Home Activity
+                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+
 
                 Toast.makeText(MainActivity.this, "Email: " + email + "\nPassword: " + password, Toast.LENGTH_SHORT).show();
             }
