@@ -1,5 +1,6 @@
 package com.example.hms475;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -45,7 +46,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.schedule_button:
-                // TODO: Implement Schedule an Appointment functionality here
+                Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.medical_reports_button:
                 // TODO: Implement View Medical Reports functionality here
