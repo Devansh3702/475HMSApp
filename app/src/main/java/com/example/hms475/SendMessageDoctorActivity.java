@@ -67,6 +67,7 @@ public class SendMessageDoctorActivity extends AppCompatActivity {
             public void onChanged(List<Doctor> doctors) {
                 // Update the adapter with the new doctor list
                 adapter.setDoctors(doctors);
+                adapter.notifyDataSetChanged();
             }
         });
 
