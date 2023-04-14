@@ -11,10 +11,14 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.hms475.MainActivity;
+
 import java.util.logging.LogRecord;
 
 @Database(entities = {Patient.class}, version = 1, exportSchema = false)
 public abstract class PatientDatabase extends RoomDatabase {
+
+
 
     public interface PatientListener {
         void onPatientReturned(Patient patient);
@@ -83,6 +87,9 @@ public abstract class PatientDatabase extends RoomDatabase {
     public static void update(Patient patient) {
         (new Thread(() -> INSTANCE.patientDAO().update(patient))).start();
     }
+
+
+
 }
 
 

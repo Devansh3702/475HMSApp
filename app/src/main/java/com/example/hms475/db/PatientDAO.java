@@ -29,6 +29,8 @@ public interface PatientDAO {
     @Query("DELETE FROM patients WHERE patientID = :patientId")
     void delete(int patientId);
 
-
+    // for loginActivity
+    @Query("SELECT * FROM patients WHERE userName = :email")
+    Patient getPatientByEmail(String email);
 }
 
