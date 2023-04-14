@@ -12,10 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -70,19 +68,29 @@ public class SendMessageDoctorActivity extends AppCompatActivity {
                 return;
             }
 
-
             // Get the subject and message text
             String subject = subjectEditText.getText().toString().trim();
             String message = messageEditText.getText().toString().trim();
 
             // Check if the subject and message are not empty
             if (!TextUtils.isEmpty(subject) && !TextUtils.isEmpty(message)) {
-                // Send the message to the selected doctor
-                Toast.makeText(SendMessageDoctorActivity.this, "Message sent to Doctor " + selectedDoctor.fullname, Toast.LENGTH_SHORT).show();
-                // redirect to HomeActivity again
-                Intent intent = new Intent(SendMessageDoctorActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
+                // Show confirmation dialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(SendMessageDoctorActivity.this);
+                builder.setTitle("Confirm");
+                builder.setMessage("Are you sure you want to send a message to Doctor " + selectedDoctor.fullname + "?");
+                builder.setPositiveButton("Yes", (dialogInterface, i) -> {
+                    // Send the message to the selected doctor
+                    Toast.makeText(SendMessageDoctorActivity.this, "Message sent to Doctor " + selectedDoctor.fullname, Toast.LENGTH_SHORT).show();
+                    // redirect to HomeActivity again
+                    Intent intent = new Intent(SendMessageDoctorActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                });
+                builder.setNegativeButton("No", (dialogInterface, i) -> {
+                    // Do nothing
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             } else {
                 // Empty subject or message field
                 Toast.makeText(SendMessageDoctorActivity.this, "Please enter subject and message", Toast.LENGTH_SHORT).show();
