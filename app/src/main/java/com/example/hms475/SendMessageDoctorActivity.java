@@ -1,9 +1,6 @@
 package com.example.hms475;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,13 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
+
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,7 +27,6 @@ import java.util.List;
 
 public class SendMessageDoctorActivity extends AppCompatActivity {
 
-    // private Spinner doctorsSpinner;
     private EditText subjectEditText;
     private EditText messageEditText;
     private Button sendButton;
@@ -45,62 +40,52 @@ public class SendMessageDoctorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sendmessagedoctor);
 
-        // doctorsSpinner = findViewById(R.id.recipient_spinner);
         subjectEditText = findViewById(R.id.subject_input);
         messageEditText = findViewById(R.id.message_input);
         sendButton = findViewById(R.id.send_button);
 
-
         // Initialize the doctor database
         doctorDatabase = DoctorDatabase.getDatabase(this);
 
-        // TODO: implement a recyclerview that helps display the doctor names in a dropdown list. Also implement a DoctorListAdapter that extends RecyclerView.Adapter with a RecyclerView.ViewHolder
-        // Initialize the doctor list adapter and set it to the recycler view
         recyclerView = findViewById(R.id.doctors_list);
         DoctorListAdapter adapter = new DoctorListAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Observe changes to the doctor list
-        doctorDatabase.doctorDAO().getAll().observe(this, new Observer<List<Doctor>>() {
-            @Override
-            public void onChanged(List<Doctor> doctors) {
-                // Update the adapter with the new doctor list
-                adapter.setDoctors(doctors);
-                adapter.notifyDataSetChanged();
-            }
+        doctorDatabase.doctorDAO().getAll().observe(this, doctors -> {
+            // Update the adapter with the new doctor list
+            adapter.setDoctors(doctors);
+            adapter.notifyDataSetChanged();
         });
 
 
-        sendButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Get the selected doctor
-                DoctorListAdapter adapter = (DoctorListAdapter) recyclerView.getAdapter();
-                Doctor selectedDoctor = adapter.getSelectedDoctor();
+        sendButton.setOnClickListener(view -> {
+            // Get the selected doctor
+            DoctorListAdapter adapter1 = (DoctorListAdapter) recyclerView.getAdapter();
+            Doctor selectedDoctor = adapter1.getSelectedDoctor();
 
-                if (selectedDoctor == null) {
-                    Toast.makeText(SendMessageDoctorActivity.this, "Please select a doctor", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+            if (selectedDoctor == null) {
+                Toast.makeText(SendMessageDoctorActivity.this, "Please select a doctor", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
 
-                // Get the subject and message text
-                String subject = subjectEditText.getText().toString().trim();
-                String message = messageEditText.getText().toString().trim();
+            // Get the subject and message text
+            String subject = subjectEditText.getText().toString().trim();
+            String message = messageEditText.getText().toString().trim();
 
-                // Check if the subject and message are not empty
-                if (!TextUtils.isEmpty(subject) && !TextUtils.isEmpty(message)) {
-                    // Send the message to the selected doctor
-                    Toast.makeText(SendMessageDoctorActivity.this, "Message sent to Doctor " + selectedDoctor.fullname, Toast.LENGTH_SHORT).show();
-                    // redirect to HomeActivity again
-                    Intent intent = new Intent(SendMessageDoctorActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    // Empty subject or message field
-                    Toast.makeText(SendMessageDoctorActivity.this, "Please enter subject and message", Toast.LENGTH_SHORT).show();
-                }
+            // Check if the subject and message are not empty
+            if (!TextUtils.isEmpty(subject) && !TextUtils.isEmpty(message)) {
+                // Send the message to the selected doctor
+                Toast.makeText(SendMessageDoctorActivity.this, "Message sent to Doctor " + selectedDoctor.fullname, Toast.LENGTH_SHORT).show();
+                // redirect to HomeActivity again
+                Intent intent = new Intent(SendMessageDoctorActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+            } else {
+                // Empty subject or message field
+                Toast.makeText(SendMessageDoctorActivity.this, "Please enter subject and message", Toast.LENGTH_SHORT).show();
             }
         });
 

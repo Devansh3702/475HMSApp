@@ -39,24 +39,21 @@ public class ScheduleAppointmentActivity extends AppCompatActivity {
 
 
         // Set an onClickListener for the schedule button
-        scheduleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Get the selected date and time from the spinners
-                String selectedDate = dateSpinner.getSelectedItem().toString();
-                String selectedTime = timeSpinner.getSelectedItem().toString();
+        scheduleButton.setOnClickListener(view -> {
+            // Get the selected date and time from the spinners
+            String selectedDate = dateSpinner.getSelectedItem().toString();
+            String selectedTime = timeSpinner.getSelectedItem().toString();
 
-                // Display a toast message with the selected date and time
-                Toast.makeText(ScheduleAppointmentActivity.this,
-                        "Appointment scheduled for " + selectedDate + " at " + selectedTime,
-                        Toast.LENGTH_SHORT).show();
+            // Display a toast message with the selected date and time
+            Toast.makeText(ScheduleAppointmentActivity.this,
+                    "Appointment scheduled for " + selectedDate + " at " + selectedTime,
+                    Toast.LENGTH_SHORT).show();
 
-                // redirect to HomeActivity again
-                Intent intent = new Intent(ScheduleAppointmentActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
+            // redirect to HomeActivity again
+            Intent intent = new Intent(ScheduleAppointmentActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
 
-            }
         });
     }
 }
