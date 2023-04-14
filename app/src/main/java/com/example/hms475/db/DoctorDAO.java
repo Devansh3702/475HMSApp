@@ -30,5 +30,6 @@ public interface DoctorDAO {
     @Query("DELETE FROM Doctors WHERE doctorID = :doctorId")
     void delete(int doctorId);
 
+
 }
 

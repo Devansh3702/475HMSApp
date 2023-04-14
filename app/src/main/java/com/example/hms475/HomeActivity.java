@@ -58,6 +58,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.send_message_button:
                 // TODO: Implement Send Message to Doctor functionality here
+                // redirect to SendMessageDoctorActivity.java
+                Intent intent3 = new Intent(HomeActivity.this, SendMessageDoctorActivity.class);
+                startActivity(intent3);
+                finish();
                 break;
             case R.id.medications_button:
                 // TODO: Implement See my Medications functionality here
