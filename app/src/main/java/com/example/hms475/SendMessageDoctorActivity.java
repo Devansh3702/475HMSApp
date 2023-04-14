@@ -92,7 +92,11 @@ public class SendMessageDoctorActivity extends AppCompatActivity {
                 // Check if the subject and message are not empty
                 if (!TextUtils.isEmpty(subject) && !TextUtils.isEmpty(message)) {
                     // Send the message to the selected doctor
-                    Toast.makeText(SendMessageDoctorActivity.this, "Message sent to " + selectedDoctor.fullname, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SendMessageDoctorActivity.this, "Message sent to Doctor " + selectedDoctor.fullname, Toast.LENGTH_SHORT).show();
+                    // redirect to HomeActivity again
+                    Intent intent = new Intent(SendMessageDoctorActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else {
                     // Empty subject or message field
                     Toast.makeText(SendMessageDoctorActivity.this, "Please enter subject and message", Toast.LENGTH_SHORT).show();
