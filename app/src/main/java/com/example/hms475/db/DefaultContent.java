@@ -34,5 +34,11 @@ public class DefaultContent {
             "Butler12345", "JackieDog5", "JosyMarina123", "Password456",
             "PsuLion000", "LionCash1972", "Eggmania1999", "Honest4566", "PatelBrothers4321", "ApnaBazarCash5"
     };
+
+    // for doctor database
+    public static String[] FULLNAME = {
+            "Emma Davis", "Liam Thompson", "Lucas Martin", "Kane Smith", "Ava Johnson", "Ethan Christian", "Olivia Carter",
+            "James Anderson", "Stuart Broad", "Joe Root"
+    };
 }
 
