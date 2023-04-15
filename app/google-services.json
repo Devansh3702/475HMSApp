@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "774020806859",
+    "project_id": "hmsapp-5614d",
+    "storage_bucket": "hmsapp-5614d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:774020806859:android:4ab1ceb34f3870a1fdc34e",
+        "android_client_info": {
+          "package_name": "com.example.hms475"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "774020806859-5qdf5b1p7ipjoca3b8vqt4a3dvtj3mes.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLCx76cmECf0VFiP93bGCC960ZDs6RS60"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "774020806859-5qdf5b1p7ipjoca3b8vqt4a3dvtj3mes.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
