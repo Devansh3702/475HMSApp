@@ -12,7 +12,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     // temp variables
     private Button scheduleButton;
     private Button medicalReportsButton;
-    private Button labReportsButton;
+    private Button schedulelabButton;
     private Button sendMessageButton;
     private Button medicationsButton;
     private Button referralButton;
@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         // temporary linking
         scheduleButton = findViewById(R.id.schedule_button);
         medicalReportsButton = findViewById(R.id.medical_reports_button);
-        labReportsButton = findViewById(R.id.lab_reports_button);
+        schedulelabButton = findViewById(R.id.lab_reports_button);
         sendMessageButton = findViewById(R.id.send_message_button);
         medicationsButton = findViewById(R.id.medications_button);
         referralButton = findViewById(R.id.referral_button);
@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         scheduleButton.setOnClickListener(this);
         medicalReportsButton.setOnClickListener(this);
-        labReportsButton.setOnClickListener(this);
+        schedulelabButton.setOnClickListener(this);
         sendMessageButton.setOnClickListener(this);
         medicationsButton.setOnClickListener(this);
         referralButton.setOnClickListener(this);
@@ -54,7 +54,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 // TODO: Implement View Medical Reports functionality here
                 break;
             case R.id.lab_reports_button:
-                // TODO: Implement View Lab Reports functionality here
+                // redirect to ScheduleLabAppointment.java
+                Intent intent4 = new Intent(HomeActivity.this, ScheduleLabAppointment.class);
+                startActivity(intent4);
+                finish();
                 break;
             case R.id.send_message_button:
                 // TODO: Implement Send Message to Doctor functionality here

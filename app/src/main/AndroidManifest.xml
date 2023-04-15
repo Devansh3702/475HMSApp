@@ -23,6 +23,7 @@
         <activity android:name=".HomeActivity"/>
         <activity android:name=".ScheduleAppointmentActivity"/>
         <activity android:name=".SendMessageDoctorActivity"/>
+        <activity android:name=".ScheduleLabAppointment"/>
     </application>
 
 </manifest>
