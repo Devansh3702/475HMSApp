@@ -20,10 +20,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity"/>
-        <activity android:name=".ScheduleAppointmentActivity"/>
-        <activity android:name=".SendMessageDoctorActivity"/>
-        <activity android:name=".ScheduleLabAppointment"/>
+        <activity android:name=".HomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ScheduleAppointmentActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SendMessageDoctorActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ScheduleLabAppointment"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
