@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         loginButton.setOnClickListener(v -> {
-            // hello
             String userName = emailEditText.getText().toString().trim();
             String password = passwordEditText.getText().toString().trim();
 
