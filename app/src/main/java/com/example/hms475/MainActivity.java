@@ -58,19 +58,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString("email", emailEditText.getText().toString());
-        outState.putString("password", passwordEditText.getText().toString());
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        emailEditText.setText(savedInstanceState.getString("email"));
-        passwordEditText.setText(savedInstanceState.getString("password"));
-    }
-
 }
