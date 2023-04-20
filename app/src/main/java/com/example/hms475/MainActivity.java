@@ -20,9 +20,6 @@ public class MainActivity extends AppCompatActivity {
 
     private PatientDatabase patientDatabase;
 
-    private String savedEmail;
-    private String savedPassword;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,12 +30,7 @@ public class MainActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.login_button);
         patientDatabase = PatientDatabase.getDatabase(this);
 
-        if (savedInstanceState != null) {
-            savedEmail = savedInstanceState.getString("email");
-            savedPassword = savedInstanceState.getString("password");
-            emailEditText.setText(savedEmail);
-            passwordEditText.setText(savedPassword);
-        }
+
 
         loginButton.setOnClickListener(v -> {
             String userName = emailEditText.getText().toString().trim();
