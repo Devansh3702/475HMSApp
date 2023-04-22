@@ -20,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
 
     private PatientDatabase patientDatabase;
 
+    private String userName;
+    private String password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.login_button);
         patientDatabase = PatientDatabase.getDatabase(this);
 
+        if (savedInstanceState != null) {
+            userName = savedInstanceState.getString("email");
+            password = savedInstanceState.getString("password");
+            emailEditText.setText(userName);
+            passwordEditText.setText(password);
+        }
 
 
         loginButton.setOnClickListener(v -> {
@@ -57,5 +66,19 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Please enter email and password", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("email", userName);
+        outState.putString("password", password);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        userName = savedInstanceState.getString("email");
+        password = savedInstanceState.getString("password");
     }
 }
