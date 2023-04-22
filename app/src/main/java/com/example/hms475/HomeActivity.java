@@ -1,11 +1,19 @@
+//Team Members - Jaishil Bhavsar, Devansh Shah, Het Patel
+
 package com.example.hms475;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -18,10 +26,33 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private Button referralButton;
     private Button signOutButton;
 
+    private SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        // Set default values in shared preferences if they have never been set
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(view -> {
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(HomeActivity.this);
+            startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
+        });
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        if (sharedPreferences.getBoolean("tfSetting", true)) {
+            // Light theme
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else {
+            // Dark theme
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+
+        //recreate();
 
         // temporary linking
         scheduleButton = findViewById(R.id.schedule_button);
@@ -31,7 +62,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         medicationsButton = findViewById(R.id.medications_button);
         referralButton = findViewById(R.id.referral_button);
         signOutButton = findViewById(R.id.sign_out_button);
-
+     //   settingsButton = findViewById(R.id.fab);
 
         scheduleButton.setOnClickListener(this);
         medicalReportsButton.setOnClickListener(this);
@@ -40,6 +71,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         medicationsButton.setOnClickListener(this);
         referralButton.setOnClickListener(this);
         signOutButton.setOnClickListener(this);
+     //   settingsButton.setOnClickListener(this);
     }
 
     @Override
@@ -78,6 +110,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent2);
                 finish();
                 break;
+
+        /*    case R.id.fab:
+                Intent intent5 = new Intent(HomeActivity.this, SettingsActivity.class);
+                startActivity(intent5);
+                finish();
+                break; */
+
         }
     }
 }

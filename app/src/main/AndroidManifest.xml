@@ -24,6 +24,7 @@
         <activity android:name=".ScheduleAppointmentActivity"/>
         <activity android:name=".SendMessageDoctorActivity"/>
         <activity android:name=".ScheduleLabAppointment"/>
+        <activity android:name=".SettingsActivity"/>
     </application>
 
 </manifest>
