@@ -4,6 +4,7 @@ package com.example.hms475;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -44,15 +45,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        if (sharedPreferences.getBoolean("tfSetting", true)) {
-            // Light theme
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        } else {
-            // Dark theme
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }
+        setTheme();
 
-        //recreate();
+
 
         // temporary linking
         scheduleButton = findViewById(R.id.schedule_button);
@@ -62,7 +57,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         medicationsButton = findViewById(R.id.medications_button);
         referralButton = findViewById(R.id.referral_button);
         signOutButton = findViewById(R.id.sign_out_button);
-     //   settingsButton = findViewById(R.id.fab);
+
 
         scheduleButton.setOnClickListener(this);
         medicalReportsButton.setOnClickListener(this);
@@ -71,7 +66,31 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         medicationsButton.setOnClickListener(this);
         referralButton.setOnClickListener(this);
         signOutButton.setOnClickListener(this);
-     //   settingsButton.setOnClickListener(this);
+
+    }
+
+    private void setTheme() {
+        if (sharedPreferences.getBoolean("tfSetting", true)) {
+            // Light theme
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else {
+            // Dark theme
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Check if theme mode has been changed
+        boolean isLightMode = sharedPreferences.getBoolean("tfSetting", true);
+        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        if (isLightMode && currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
+            recreate();
+        } else if (!isLightMode && currentNightMode == Configuration.UI_MODE_NIGHT_NO) {
+            recreate();
+        }
     }
 
     @Override
