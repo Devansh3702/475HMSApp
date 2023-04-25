@@ -119,6 +119,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.medications_button:
                 // TODO: Implement See my Medications functionality here
+                Intent i2 = new Intent(HomeActivity.this, SendVoiceMessageActivity.class);
+                startActivity(i2);
+                finish();
                 break;
             case R.id.referral_button:
                 // TODO: Implement Get Referral functionality here

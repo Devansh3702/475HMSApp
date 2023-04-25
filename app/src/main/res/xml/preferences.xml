@@ -4,7 +4,7 @@
     <CheckBoxPreference
         android:key="tfSetting"
         android:title="Light/Dark Theme Setting."
-        android:summary="Disable Light Theme"
+        android:summary="Enable Light Theme"
         android:defaultValue="true" />
 
 

@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+
+    <!--Permission for recording audio and storage of audio in users device-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -20,11 +27,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity"/>
-        <activity android:name=".ScheduleAppointmentActivity"/>
-        <activity android:name=".SendMessageDoctorActivity"/>
-        <activity android:name=".ScheduleLabAppointment"/>
-        <activity android:name=".SettingsActivity"/>
+        <activity android:name=".HomeActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".ScheduleAppointmentActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".SendMessageDoctorActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".ScheduleLabAppointment"  android:screenOrientation="portrait"/>
+        <activity android:name=".SettingsActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".SendVoiceMessageActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
