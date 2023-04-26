@@ -29,4 +29,25 @@
         <item>3:00 PM</item>
         <item>4:00 PM</item>
     </string-array>
+
+    <string name="patient_homepage">Patient Homepage</string>
+    <string name="schedule_appointment">Schedule an Appointment</string>
+    <string name="lab_appointment">Schedule Lab Appointment</string>
+    <string name="send_message">Send Text Message to Doctor</string>
+    <string name="voice_message">Send Voice Message to Doctor</string>
+    <string name="sign_out_button">Sign Out</string>
+    <string name="login_button">Login</string>
+    <string name="date">Select a Date:</string>
+    <string name="time">Select a Time:</string>
+    <string name="schedule">Schedule Appointment</string>
+    <string name="labtest">Select the name of Lab Test:</string>
+    <string name="to">To:</string>
+    <string name="subject">Subject:</string>
+    <string name="message">Message:</string>
+    <string name="send">Send</string>
+    <string name="record">Record</string>
+    <string name="stop">Stop</string>
+    <string name="play">Play</string>
+    <string name="log_in">Log in</string>
+
 </resources>
