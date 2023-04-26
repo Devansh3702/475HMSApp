@@ -1,5 +1,5 @@
 //Team Members - Jaishil Bhavsar, Devansh Shah, Het Patel
-
+//CMPSC 475 Final Project
 package com.example.hms475;
 
 import android.content.Intent;
