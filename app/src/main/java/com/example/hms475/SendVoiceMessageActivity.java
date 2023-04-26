@@ -13,7 +13,9 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
+import android.os.PersistableBundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -32,6 +34,13 @@ public class SendVoiceMessageActivity extends AppCompatActivity {
 
     boolean messageRecordingDone = false;
     boolean helper = false;
+
+    // for data persistence
+    private static final String MESSAGE_RECORDING_DONE_KEY = "messageRecordingDone";
+    private static final String HELPER_KEY = "helper";
+    private static final String IS_RECORDING_KEY = "isRecording";
+    private static final String RECORDING_FILE_PATH_KEY = "recordingFilePath";
+    private String recordingFilePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +76,13 @@ public class SendVoiceMessageActivity extends AppCompatActivity {
                 Toast.makeText(SendVoiceMessageActivity.this, "Please Record a Message first", Toast.LENGTH_SHORT).show();
             }
         });
+
+        // for data persistence
+        if (savedInstanceState != null) {
+            onRestoreInstanceState(savedInstanceState);
+        } else {
+            recordingFilePath = getRecordingFilePath();
+        }
     }
 
     private boolean isMicrophonePresent() {
@@ -171,6 +187,26 @@ public class SendVoiceMessageActivity extends AppCompatActivity {
                 Toast.makeText(this, "Microphone permission denied", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+
+        outState.putBoolean(MESSAGE_RECORDING_DONE_KEY, messageRecordingDone);
+        outState.putBoolean(HELPER_KEY, helper);
+        outState.putBoolean(IS_RECORDING_KEY, isRecording);
+        outState.putString(RECORDING_FILE_PATH_KEY, recordingFilePath);
+    }
+
+    @Override
+    public void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        messageRecordingDone = savedInstanceState.getBoolean(MESSAGE_RECORDING_DONE_KEY);
+        helper = savedInstanceState.getBoolean(HELPER_KEY);
+        isRecording = savedInstanceState.getBoolean(IS_RECORDING_KEY);
+        recordingFilePath = savedInstanceState.getString(RECORDING_FILE_PATH_KEY);
     }
 
 }

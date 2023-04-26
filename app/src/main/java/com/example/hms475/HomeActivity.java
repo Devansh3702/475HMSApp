@@ -16,9 +16,10 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+// no data to persist in this activity.
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    // temp variables
+
     private Button scheduleButton;
     private Button medicalReportsButton;
     private Button schedulelabButton;
@@ -47,24 +48,18 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         setTheme();
 
-
-
-        // temporary linking
         scheduleButton = findViewById(R.id.schedule_button);
-        medicalReportsButton = findViewById(R.id.medical_reports_button);
         schedulelabButton = findViewById(R.id.lab_reports_button);
         sendMessageButton = findViewById(R.id.send_message_button);
         medicationsButton = findViewById(R.id.medications_button);
-        referralButton = findViewById(R.id.referral_button);
         signOutButton = findViewById(R.id.sign_out_button);
 
 
         scheduleButton.setOnClickListener(this);
-        medicalReportsButton.setOnClickListener(this);
+
         schedulelabButton.setOnClickListener(this);
         sendMessageButton.setOnClickListener(this);
         medicationsButton.setOnClickListener(this);
-        referralButton.setOnClickListener(this);
         signOutButton.setOnClickListener(this);
 
     }
@@ -101,9 +96,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 finish();
                 break;
-            case R.id.medical_reports_button:
-                // TODO: Implement View Medical Reports functionality here
-                break;
             case R.id.lab_reports_button:
                 // redirect to ScheduleLabAppointment.java
                 Intent intent4 = new Intent(HomeActivity.this, ScheduleLabAppointment.class);
@@ -111,20 +103,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.send_message_button:
-                // TODO: Implement Send Message to Doctor functionality here
                 // redirect to SendMessageDoctorActivity.java
                 Intent intent3 = new Intent(HomeActivity.this, SendMessageDoctorActivity.class);
                 startActivity(intent3);
                 finish();
                 break;
             case R.id.medications_button:
-                // TODO: Implement See my Medications functionality here
                 Intent i2 = new Intent(HomeActivity.this, SendVoiceMessageActivity.class);
                 startActivity(i2);
                 finish();
-                break;
-            case R.id.referral_button:
-                // TODO: Implement Get Referral functionality here
                 break;
             case R.id.sign_out_button:
                 // redirect to MainActivity again (login page)
@@ -132,12 +119,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent2);
                 finish();
                 break;
-
-        /*    case R.id.fab:
-                Intent intent5 = new Intent(HomeActivity.this, SettingsActivity.class);
-                startActivity(intent5);
-                finish();
-                break; */
 
         }
     }

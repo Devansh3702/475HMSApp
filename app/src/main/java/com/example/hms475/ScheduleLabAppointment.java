@@ -90,7 +90,7 @@ public class ScheduleLabAppointment extends AppCompatActivity {
         addDataToFirestore();
 
     }
-             //firebase data
+    //firebase data
     private void addDataToFirestore() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -122,6 +122,4 @@ public class ScheduleLabAppointment extends AppCompatActivity {
                     }
                 });
     }
-
-
 }

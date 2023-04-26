@@ -25,6 +25,10 @@ import java.util.List;
 
 public class SendMessageDoctorActivity extends AppCompatActivity {
 
+    private static final String SUBJECT_KEY = "subject";
+    private static final String MESSAGE_KEY = "message";
+    private static final String SELECTED_DOCTOR_KEY = "selectedDoctor";
+
     private EditText subjectEditText;
     private EditText messageEditText;
     private Button sendButton;
@@ -100,6 +104,34 @@ public class SendMessageDoctorActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(SUBJECT_KEY, subjectEditText.getText().toString());
+        outState.putString(MESSAGE_KEY, messageEditText.getText().toString());
+        DoctorListAdapter adapter = (DoctorListAdapter) recyclerView.getAdapter();
+        Doctor selectedDoctor = adapter.getSelectedDoctor();
+        if (selectedDoctor != null) {
+            outState.putInt(SELECTED_DOCTOR_KEY, selectedDoctor.id);
+        }
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        String subject = savedInstanceState.getString(SUBJECT_KEY);
+        String message = savedInstanceState.getString(MESSAGE_KEY);
+        int selectedDoctorId = savedInstanceState.getInt(SELECTED_DOCTOR_KEY, -1);
+
+        subjectEditText.setText(subject);
+        messageEditText.setText(message);
+
+        if (selectedDoctorId != -1) {
+            DoctorListAdapter adapter = (DoctorListAdapter) recyclerView.getAdapter();
+            adapter.setSelectedDoctorById(selectedDoctorId);
+        }
+    }
+
     public class DoctorListAdapter extends RecyclerView.Adapter<DoctorListAdapter.DoctorViewHolder>{
 
 
@@ -123,7 +155,7 @@ public class SendMessageDoctorActivity extends AppCompatActivity {
         }
 
         private final LayoutInflater layoutInflater;
-        private List<Doctor> doctors; // Cached copy of doctors
+        private List<Doctor> doctors;
         private Doctor selectedDoctor;
 
         DoctorListAdapter(Context context) {
@@ -168,6 +200,17 @@ public class SendMessageDoctorActivity extends AppCompatActivity {
                 return doctors.size();
             } else {
                 return 0;
+            }
+        }
+
+        void setSelectedDoctorById(int doctorId) {
+            if (doctors != null) {
+                for (Doctor doctor : doctors) {
+                    if (doctor.id == doctorId) {
+                        setSelectedDoctor(doctor);
+                        break;
+                    }
+                }
             }
         }
     }

@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ScheduleAppointmentActivity extends AppCompatActivity {
 
+    private static final String DATE_SPINNER_SELECTED_POSITION = "date_spinner_selected_position";
+    private static final String TIME_SPINNER_SELECTED_POSITION = "time_spinner_selected_position";
+
     private Spinner dateSpinner;
     private Spinner timeSpinner;
     private Button scheduleButton;
@@ -37,14 +40,16 @@ public class ScheduleAppointmentActivity extends AppCompatActivity {
         timeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         timeSpinner.setAdapter(timeAdapter);
 
+        if (savedInstanceState != null) {
+            dateSpinner.setSelection(savedInstanceState.getInt(DATE_SPINNER_SELECTED_POSITION));
+            timeSpinner.setSelection(savedInstanceState.getInt(TIME_SPINNER_SELECTED_POSITION));
+        }
 
-        // Set an onClickListener for the schedule button
         scheduleButton.setOnClickListener(view -> {
             // Get the selected date and time from the spinners
             String selectedDate = dateSpinner.getSelectedItem().toString();
             String selectedTime = timeSpinner.getSelectedItem().toString();
 
-            // Display a toast message with the selected date and time
             Toast.makeText(ScheduleAppointmentActivity.this,
                     "Appointment scheduled for " + selectedDate + " at " + selectedTime,
                     Toast.LENGTH_SHORT).show();
@@ -55,5 +60,21 @@ public class ScheduleAppointmentActivity extends AppCompatActivity {
             finish();
 
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(DATE_SPINNER_SELECTED_POSITION, dateSpinner.getSelectedItemPosition());
+        outState.putInt(TIME_SPINNER_SELECTED_POSITION, timeSpinner.getSelectedItemPosition());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState != null) {
+            dateSpinner.setSelection(savedInstanceState.getInt(DATE_SPINNER_SELECTED_POSITION));
+            timeSpinner.setSelection(savedInstanceState.getInt(TIME_SPINNER_SELECTED_POSITION));
+        }
     }
 }

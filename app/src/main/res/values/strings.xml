@@ -6,11 +6,18 @@
 
 <!-- temporary-->
     <string-array name="calendar_dates">
-        <item>Monday, April 18</item>
-        <item>Tuesday, April 19</item>
-        <item>Wednesday, April 20</item>
-        <item>Thursday, April 21</item>
-        <item>Friday, April 22</item>
+        <item>Monday, May 1</item>
+        <item>Tuesday, May 2</item>
+        <item>Wednesday, May 3</item>
+        <item>Thursday, May 4</item>
+        <item>Friday, May 5</item>
+
+        <item>Monday, May 8</item>
+        <item>Tuesday, May 9</item>
+        <item>Wednesday, May 10</item>
+        <item>Thursday, May 11</item>
+        <item>Friday, May 12</item>
+
     </string-array>
 
     <string-array name="appointment_times">

@@ -44,8 +44,7 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(v -> {
             String userName = emailEditText.getText().toString().trim();
             String password = passwordEditText.getText().toString().trim();
-
-            // TODO: Implement login functionality here, and simplify the below code later
+            
             // Check if email and password are valid
             if (!TextUtils.isEmpty(userName) && !TextUtils.isEmpty(password)) {
                 // using another thread to access database
