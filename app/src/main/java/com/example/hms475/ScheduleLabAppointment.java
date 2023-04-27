@@ -1,3 +1,4 @@
+//Team members: Devansh Shah, Jaishil Bhavsar, and Het Patel
 package com.example.hms475;
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,13 +38,13 @@ public class ScheduleLabAppointment extends AppCompatActivity {
         timeSpinner2 = findViewById(R.id.time_spinner2);
         scheduleButton2 = findViewById(R.id.schedule_button2);
 
-        // Populate the date spinner with calendar dates
+        // Populate date spinner with calendar dates
         ArrayAdapter<CharSequence> dateAdapter = ArrayAdapter.createFromResource(
                 this, R.array.calendar_dates, android.R.layout.simple_spinner_item);
         dateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dateSpinner2.setAdapter(dateAdapter);
 
-        // Populate the time spinner with available appointment times
+        // Populate time spinner with available appointment times
         ArrayAdapter<CharSequence> timeAdapter = ArrayAdapter.createFromResource(
                 this, R.array.appointment_times, android.R.layout.simple_spinner_item);
         timeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -100,11 +101,12 @@ public class ScheduleLabAppointment extends AppCompatActivity {
         lab.put("3", "Urine test");
         lab.put("4", "Bone Density test");
         lab.put("5", "Thyroid test");
-        lab.put("6", "Allergy skin test");
-        lab.put("7", "Antibody Sensitivity test");
-        lab.put("8", "X-Ray");
-        lab.put("9", "MRI Scan");
-        lab.put("10", "Blood Glucose Test");
+        lab.put("6", "Blood Glucose Test");
+        lab.put("7", "Allergy skin test");
+        lab.put("8", "Antibody Sensitivity test");
+        lab.put("9", "X-Ray");
+        lab.put("10", "MRI Scan");
+        
 
         // Add the lab tests data to Firestore
         db.collection("labtests")
